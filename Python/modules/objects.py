@@ -1,6 +1,7 @@
 import html
 import os
 import re
+import ipaddress
 
 from modules.helpers import strip_nonalphanum
 
@@ -8,6 +9,12 @@ from modules.helpers import strip_nonalphanum
 class HTTPTableObject(object):
 
     """docstring for HTTPTableObject"""
+
+    def validIPAddress(IP: str) -> str:
+        try:
+         return "IPv4" if type(ip_address(IP)) is IPv4Address else "IPv6"
+        except ValueError:
+            return "Invalid"
 
     def __init__(self):
         super(HTTPTableObject, self).__init__()
@@ -106,6 +113,8 @@ class HTTPTableObject(object):
         if remote_system.startswith('http://') or remote_system.startswith('https://'):
             pass
         else:
+            if validIPAddress((remote_system) = IPv6):
+                remote_system = '['+ remote_system +']'
             if ':8443' in remote_system or ':443' in remote_system:
                 remote_system = 'https://' + remote_system
             else:
@@ -404,7 +413,7 @@ class UAObject(HTTPTableObject):
             except UnicodeEncodeError:
                 html += u"<br><b>Default credentials:</b> {0}<br>".format(
 		    self.sanitize(self.default_creds))
-                
+
         try:
             html += "\n<br><b> Page Title: </b>{0}\n".format(
                 self.sanitize(self.page_title))
@@ -416,7 +425,7 @@ class UAObject(HTTPTableObject):
                     self.sanitize(self.page_title))
 
         for key, value in self.headers.items():
-            try: 
+            try:
                 html += '<br><b> {0}:</b> {1}\n'.format(
                     self.sanitize(key), self.sanitize(value))
             except UnicodeEncodeError:
