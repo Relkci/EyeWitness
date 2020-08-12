@@ -5,16 +5,17 @@ import ipaddress
 
 from modules.helpers import strip_nonalphanum
 
+def validIPAddress(IP: str) -> str:
+    try:
+        return "IPv4" if type(ip_address(IP)) is IPv4Address else "IPv6"
+    except ValueError:
+        return "Invalid"
 
 class HTTPTableObject(object):
 
     """docstring for HTTPTableObject"""
 
-    def validIPAddress(IP: str) -> str:
-        try:
-         return "IPv4" if type(ip_address(IP)) is IPv4Address else "IPv6"
-        except ValueError:
-            return "Invalid"
+
 
     def __init__(self):
         super(HTTPTableObject, self).__init__()
@@ -114,7 +115,7 @@ class HTTPTableObject(object):
             pass
         else:
             if validIPAddress((remote_system) = IPv6):
-                remote_system = '['+ remote_system +']'
+                remote_system = '[' + remote_system +']'
             if ':8443' in remote_system or ':443' in remote_system:
                 remote_system = 'https://' + remote_system
             else:
