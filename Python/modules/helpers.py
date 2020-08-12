@@ -13,7 +13,7 @@ import socket
 from netaddr import IPAddress
 from netaddr.core import AddrFormatError
 from urllib.parse import urlparse
-
+from ipaddress import ip_address, IP
 
 class XML_Parser(xml.sax.ContentHandler):
 
@@ -234,6 +234,12 @@ class XML_Parser(xml.sax.ContentHandler):
     def characters(self, content):
         if self.read_plugin_output:
             self.plugin_output += content
+
+def validIPAddress(IP: str) -> str:
+try:
+    return "IPv4" if type(ip_address(IP)) is IPv4Address else "IPv6"
+except ValueError:
+    return "Invalid"
 
 def duplicate_check(cli_object):
     # This is used for checking for duplicate images
