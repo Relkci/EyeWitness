@@ -277,9 +277,10 @@ def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
         capture_host = selenium_module.capture_host
     print ('this far2')
     with lock:
+        print ('this far3')
         driver = create_driver(cli_parsed, user_agent)
     try:
-        print ('this far3')
+        print ('this far4')
         while True:
             http_object = targets.get()
             if http_object is None:
