@@ -278,6 +278,7 @@ def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
         print('this far1c')
         capture_host = selenium_module.capture_host
     print ('this far2')
+
     with lock:
         print ('this far3')
         try: 
@@ -330,6 +331,9 @@ def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
             do_jitter(cli_parsed)
     except KeyboardInterrupt:
         pass
+    except  BaseException as e1: 
+            print("An exception occurred at try2")
+            print("Error:" + str(e1))
     manager.close()
     driver.quit()
 
