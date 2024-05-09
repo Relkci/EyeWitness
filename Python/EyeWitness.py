@@ -278,7 +278,11 @@ def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
     print ('this far2')
     with lock:
         print ('this far3')
-        driver = create_driver(cli_parsed, user_agent)
+        try: 
+            driver = create_driver(cli_parsed, user_agent)
+        except BaseException as e: 
+            print("An exception occurred invoking web driver")
+            print("Error:" | str(e))
     try:
         print ('this far4')
         while True:
