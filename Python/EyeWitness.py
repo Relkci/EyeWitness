@@ -269,8 +269,9 @@ def single_mode(cli_parsed):
 
 def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
     manager = db_manager.DB_Manager(cli_parsed.d + '/ew.db')
+    print ('this far0')
     manager.open_connection()
-
+    print ('this far1')
     if cli_parsed.web:
         create_driver = selenium_module.create_driver
         capture_host = selenium_module.capture_host
