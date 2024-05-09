@@ -273,7 +273,9 @@ def worker_thread(cli_parsed, targets, lock, counter, user_agent=None):
     manager.open_connection()
     print ('this far1')
     if cli_parsed.web:
+        print('this far1b')
         create_driver = selenium_module.create_driver
+        print('this far1c')
         capture_host = selenium_module.capture_host
     print ('this far2')
     with lock:
