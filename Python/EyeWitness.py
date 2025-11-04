@@ -357,12 +357,11 @@ def worker_thread(cli_parsed, targets, lock, counter, start_time, user_agent=Non
             http_object._category = None
             http_object._default_creds = None
             http_object._error_state = None
-            http_object._page_title = None
+            http_object.page_title = None
             http_object._ssl_error = False
             http_object.category = None
             http_object.default_creds = None
             http_object.error_state = None
-            http_object.page_title = None
             http_object.resolved = None
             http_object.source_code = None
             # Fix our directory if its resuming from a different path

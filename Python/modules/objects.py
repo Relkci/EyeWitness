@@ -15,7 +15,7 @@ class HTTPTableObject(object):
         self._id = None
         self._screenshot_path = None
         self._http_headers = {}
-        self._page_title = None
+        self.page_title = None
         self._remote_system = None
         self._remote_login = None
         self._source_path = None
@@ -94,11 +94,11 @@ class HTTPTableObject(object):
 
     @property
     def page_title(self):
-        return self._page_title
+        return self.page_title
 
     @page_title.setter
     def page_title(self, page_title):
-        self._page_title = page_title
+        self.page_title = page_title
 
     @property
     def remote_system(self):
